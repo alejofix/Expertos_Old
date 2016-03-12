@@ -1,0 +1,27 @@
+                                                <select class="form-control" name="Analista2" id="Analista">
+            					                        <option value="">Seleccione participante </option>
+        											         <optgroup>
+                                                            {% for la in ListadoAnalistas %}
+    													       <option value="{{ la|join }}"> {{ la|join }}</option>
+    												        {% endfor %}
+                                                            </optgroup>
+                                	            </select>
+                                                <p class="help-block">2do. Participante </p>
+                                                <select class="form-control" name="Analista3" id="Analista">
+            												<option value="">Seleccione participante</option>
+        											         <optgroup>
+                                                            {% for la in ListadoAnalistas %}
+    													       <option value="{{ la|join }}"> {{ la|join }}</option>
+    												        {% endfor %}
+                                                            </optgroup>
+            						            </select>
+                                                <p class="help-block">3er. Participante </p>
+                                                <select class="form-control" name="Analista4" id="Analista">
+            												<option value="">Seleccione participante</option>
+        											         <optgroup>
+                                                            {% for la in ListadoAnalistas %}
+    													       <option value="{{ la|join }}"> {{ la|join }}</option>
+    												        {% endfor %}
+                                                            </optgroup>
+            						            </select>
+                                                <p class="help-block">4to. Participante </p>

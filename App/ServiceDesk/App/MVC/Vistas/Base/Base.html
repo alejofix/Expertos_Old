@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+<!-- Inicio Header -->							
+{% include 'Base/Header/Head.html' %}
+<!-- Fin Header -->
+		</head>
+		
+		<body>
+			<div id="wrapper">
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+<!-- Inicio Logo -->							
+{% include 'Base/Header/Logo.html' %}
+<!-- Fin Logo -->
+		
+					<ul class="nav navbar-top-links navbar-right">
+						
+                        <!-- 
+                        <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+							</a>
+                            
+							<ul class="dropdown-menu dropdown-alerts">
+								<li>
+									<a href="#">
+										<div>
+											<i class="fa fa-comment fa-fw"></i> New Comment
+											<span class="pull-right text-muted small">4 minutes ago</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</li>
+                        -->   
+		
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+							</a>
+<!-- Inicio Menu Usuario -->							
+{% include 'Base/Menu/Usuario.html' %}
+<!-- Fin Menu Usuario -->
+						</li>
+					</ul>
+					<!-- /.navbar-top-links -->
+		
+					<div class="navbar-default navbar-static-side" role="navigation">
+						<div class="sidebar-collapse">
+<!-- Inicio Menu Lateral -->
+{% include 'Base/Menu/Lateral.html' %}
+<!-- Fin Menu Lateral -->
+						</div>
+					</div>
+				</nav>
+		
+				<div id="page-wrapper">
+				
+{% block Contenido %}{% endblock %}
+				
+				</div>
+			</div>
+		
+		
+			<!-- Core Scripts - Include with every page -->
+			<script src="{{ NeuralRutaWebPublico|e }}/js/jquery-1.10.2.js"></script>
+			<script src="{{ NeuralRutaWebPublico|e }}/js/bootstrap.min.js"></script>
+			<script src="{{ NeuralRutaWebPublico|e }}/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+			<!-- Page-Level Plugin Scripts - Blank -->
+{% block Plugin %}{% endblock %}
+			<!-- SB Admin Scripts - Include with every page -->
+			<script src="{{ NeuralRutaWebPublico|e }}/js/sb-admin.js"></script>
+{% block Script %}{% endblock %}
+		</body>
+	</html>

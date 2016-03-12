@@ -1,0 +1,21 @@
+<ul class="nav" id="side-menu">
+				
+			{% if Sesion.Permisos.HFC.LECTURA == true %}
+        <br /><a class="navbar-brand" href="{{ NeuralRutaApp|e }}/Mejoramiento/Inicio">Mejoramiento</a><br /><br />
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Búsqueda...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </li>
+				<li><a href="{{ NeuralRutaApp|e }}/Mejoramiento/Mejoras_CCAA"><i class="fa fa-wrench fa-fw"></i> Mejoramiento<span class="fa arrow"></span></a></li>
+                <li><a href="{{ NeuralRutaApp|e }}/Mejoramiento/CausaRaiz_Analisis"><i class="fa fa-edit fa-fw"></i> Causa raíz<span class="fa arrow"></span></a></li>
+                <li><a href="{{ NeuralRutaApp|e }}/Mejoramiento/Reportes_Mejoramiento"><i class="fa fa-files-o fa-fw"></i> Reportes<span class="fa arrow"></span></a></li>
+
+            {% endif %}
+				
+</ul>            

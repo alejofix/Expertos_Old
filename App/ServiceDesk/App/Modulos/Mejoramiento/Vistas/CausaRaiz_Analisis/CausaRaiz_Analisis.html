@@ -1,0 +1,275 @@
+	{% extends 'Base/Base.html' %}
+	
+	{% block Contenido %}
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header">Causa Raíz</h3>
+			</div>
+		</div>
+
+        <div class="panel-body">
+                        {% include 'Menus/menu_causaraiz.html' %}    
+                        <!-- Nav tabs -->
+       </div>
+<!--init  /#page-content-wrapper --> 
+<div class="row">
+      <div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading"><i class="fa fa-save"></i><strong> Ingreso  Información a BD</strong></div>
+				<div class="panel-body">
+					<div class="row">
+				<!-- inicio -->	
+                    <div class="panel-body">
+						<div class="row">
+							<form id="FormCausaRaizAnalisis" name="FormCausaRaizAnalisis" action='#' method='post' role="form">
+                            <!-- 1 fila -->
+                            <div class="col-lg-12">
+                            
+                                <div class="col-lg-6">
+                                  
+               
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                <label>Título </label>
+										      <input type="text" class="form-control" name="titulo" id="titulo" maxlength="40" placeholder="Referencia" autofocus="autofocus" required/>
+										      <p class="help-block">Título del Proceso ...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                <label>Tipo de Proceso</label>
+            									    <select class="form-control" name="Proceso" id="Proceso" required/>
+            										     <option value="">Seleccione proceso</option>
+            											 <optgroup>
+            												<option value="Analisis">Análisis</option>
+            												<option value="Causa_Raiz">Causa Raíz</option>
+            								                <optgroup>
+            									    </select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                  
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                <label>Adjuntar Archivos <br /> Análisis.xls y Presentación.pps</label>
+                                                <input name="adjuntos" type="file">
+										</div>
+                                    </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                
+										</div>
+                                    </div>
+                                    
+                                </div>
+                                
+                             </div>   
+                            <!-- fin 1 fila -->
+                            <!-- 2 fila -->
+                             <div class="col-lg-12">
+                            
+                                <div class="col-lg-6">
+                                  
+                                    <div class="col-lg-6">
+                             
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                             <label>Marcación(es) Analizada (s)</label>
+                                                  <select name="CTA1" class="form-control" required/>
+            											<option value="">Seleccione Marcación</option>
+            											<optgroup>
+            								                {% for lm in ListadoMarcaciones %}
+    													       <option value="{{ lm|join ('-') }}"> {{ lm|join ('-') }}</option>
+    												        {% endfor %}
+            											</optgroup>
+										          </select>
+                                                  <br /><p><a class="btn btn-default" value="Mostrar" onclick="mostrar()">Agregar Marcaciones</a></p>
+                                 		</div>
+                                        <div class="col-lg-12" id='oculto' style='display:none;'>
+                                            <div>
+                                                        <select name="CTA2" class="form-control" required/>
+                											<option value="">Seleccione Marcación</option>
+                											<optgroup>
+                								                {% for lm in ListadoMarcaciones %}
+        													       <option value="{{ lm|join ('-') }}"> {{ lm|join ('-') }}</option>
+        												        {% endfor %}
+                											</optgroup>
+                										</select>
+                                                        <p class="help-block">2da. Marcación </p>
+                                            </div>
+                                            <div>
+                                                        <select name="CTA3" class="form-control" required/>
+                											<option value="">Seleccione Marcación</option>
+                											<optgroup>
+                								                {% for lm in ListadoMarcaciones %}
+        													       <option value="{{ lm|join ('-') }}"> {{ lm|join ('-') }}</option>
+        												        {% endfor %}
+                											</optgroup>
+                										</select>
+                                                        <p class="help-block">3ra. Marcación </p>
+                                            </div>
+                                            <div>
+                                                        <select name="CTA4" class="form-control" required/>
+                											<option value="">Seleccione Marcación</option>
+                											<optgroup>
+                								                {% for lm in ListadoMarcaciones %}
+        													       <option value="{{ lm|join ('-') }}"> {{ lm|join ('-') }}</option>
+        												        {% endfor %}
+                											</optgroup>
+                										</select>
+                                                        <p class="help-block">4ta. Marcación </p>
+                                            </div>
+                                            <div>
+                                                        <select name="CTA5" class="form-control" required/>
+                											<option value="">Seleccione Marcación</option>
+                											<optgroup>
+                								                {% for lm in ListadoMarcaciones %}
+        													       <option value="{{ lm|join ('-') }}"> {{ lm|join ('-') }}</option>
+        												        {% endfor %}
+                											</optgroup>
+                										</select>
+                                                        <p class="help-block">5ta. Marcación </p>
+                                            </div>
+                                        </div>
+                                        
+                                   </div>
+                                   
+                                    
+                                    <div class="col-lg-6">
+                                     
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                            <label>Participante(s)</label>
+                                                <select id="disabledSelect" class="form-control" name="Analista" id="Analista">
+            												<option value="{{Sesion.Informacion.NOMBRE|title}}">{{Sesion.Informacion.NOMBRE|title}}</option>
+            						            </select>
+                                                <br /><p><a class="btn btn-default" style='cursor: pointer;' onclick="muestra_oculta('contenido_a_mostrar')" title="">Agregar Participantes</a></p>   
+										</div>
+                                        <div class="form-group row" style="margin-right: 2px;" id="contenido_a_mostrar">
+                                                
+                                                {% include 'Listas/Analistas.html' %}
+                                                	    
+                                        </div>
+                                 
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                  
+                                    <div class="col-lg-12">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                            <div  style="margin-right: 2px;">
+                                                <label>Observaciones</label>
+                                                <br />
+                                               <textarea class="form-control" name="sintoma" id="sintoma" placeholder="Notas de Observaciones " ></textarea>
+                                                <label>Hallazgos</label>
+                                                <br />                                                
+                                               <textarea class="form-control" name="sintoma" id="sintoma" placeholder="Notas de Hallazgos " ></textarea>
+                                            </div>   
+										</div>
+                                    </div>
+                                    
+                                </div>
+                                
+                             </div>    
+                            <!-- fin 2 fila -->
+                            <!-- 3 fila -->
+                            <div class="col-lg-12">
+                            
+                                <div class="col-lg-6">
+                                  
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                
+										</div>
+                                    </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                
+										</div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                  
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                   
+										</div>
+                                    </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group row" style="margin-right: 2px;">
+                                                <button type="reset" class="btn btn-default">Borrar</button>  
+										</div>
+                                    </div>
+                                    
+                                </div>
+                                
+                             </div>   
+                            <!-- fin 3 fila -->
+                            </form>
+						</div>
+					</div>
+                <!-- fin -->
+			   </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /#page-content-wrapper -->	                        
+                        
+                               
+ 
+	{% endblock %}
+    
+   	{% block Script %}
+		
+		<style type="text/css">
+			.error {
+				font-family: verdana;
+				font-size: 10px;
+				font-weight: bold;
+				color: red;
+			}
+		</style>
+        <script type="text/javascript">
+			$(document).ready(function() {
+				$("#borrar").click(function() {
+					 $("#FormCausaRaizAnalisis")[0].reset();
+				});
+			});
+		</script>
+        <script type="text/javascript">
+            function mostrar(){
+            document.getElementById('oculto').style.display = 'block';}
+        </script>
+        <script type="text/javascript">
+            function ocultar(){
+            document.getElementById('ver').style.display = 'none';}
+        </script>
+        <script language="JavaScript">   
+            function muestra_oculta(id){
+                if (document.getElementById){ 
+                var el = document.getElementById(id); 
+                    el.style.display = (el.style.display == 'none') ? 'block' : 'none'; 
+                }
+                }
+                    window.onload = function(){
+                    muestra_oculta('contenido_a_mostrar');
+                }
+        </script>
+		
+	{% endblock %}
+    
+    
+	

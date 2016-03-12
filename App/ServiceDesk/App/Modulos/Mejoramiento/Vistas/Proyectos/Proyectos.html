@@ -1,0 +1,109 @@
+	{% extends 'Base/Base.html' %}
+	
+	{% block Contenido %}
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header">Mejoramiento</h3>
+			</div>
+		</div>
+
+        <div class="panel-body">
+        {% include 'Menus/menu_mejoramiento.html' %}
+                        <!-- Nav tabs -->
+                        
+       </div>
+  
+  		<div class="row">
+		      <div class="col-lg-12">
+    				<div class="panel panel-default">
+    					<div class="panel-heading"><i class="fa fa-save"></i><strong> Ingreso  Información a BD</strong></div>
+    					<div class="panel-body">
+    						<div class="row">
+    					<!-- inicio -->			
+                            <form id="Proyetos" name="Proyetos" action='#' method='post' role="form">
+                                <!-- 1 fila -->
+                                    <div class="col-lg-12">
+                                    
+                                        <div class="col-lg-6">
+                                          
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    1    
+        										</div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    2    
+        										</div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-lg-6">
+                                          
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    3    
+                                              	</div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    4
+                                              	</div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                     </div>   
+                                <!-- fin 1 fila -->
+                                <!-- 2 fila -->
+                                    <div class="col-lg-12">
+                                    
+                                        <div class="col-lg-6">
+                                          
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    5   
+        										</div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                    6    
+        										</div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-lg-6">
+                                          
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                                           
+        										</div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group row" style="margin-right: 2px;">
+                                                        <button type="reset" class="btn btn-default">Borrar</button>  
+        										</div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                     </div>   
+                                <!-- fin 2 fila -->
+                            </form>
+    					<!-- fin -->
+    					   </div>
+                        </div>
+                    </div>
+                </div>
+<!-- /#page-content-wrapper -->
+		</div>
+	
+	{% endblock %}

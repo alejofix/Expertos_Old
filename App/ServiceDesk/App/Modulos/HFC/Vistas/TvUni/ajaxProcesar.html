@@ -1,0 +1,28 @@
+	
+		
+		
+	{% extends 'Base/HFCguion.html' %}
+	
+	{% block Contenido %}
+	
+	
+		{% if Datos.prioridad == '1' %}
+<div id="description" style="display: none;">{% include 'TvUni/Prioridad/1.html' %}</div>
+{% include 'TvUni/Prioridad/1.html' %}
+
+			{% elseif Datos.prioridad == '2' %}
+<div id="description" style="display: none;">{% include 'TvUni/Prioridad/2.html' %}</div>
+{% include 'TvUni/Prioridad/2.html' %}
+			
+			{% elseif Datos.prioridad == '3' %}
+<div id="description" style="display: none;">{% include 'TvUni/Prioridad/3.html' %}</div>
+{% include 'TvUni/Prioridad/3.html' %}
+			
+			{% elseif Datos.prioridad == '4' %}
+<div id="description" style="display: none;">{% include 'TvUni/Prioridad/4.html' %}</div>
+{% include 'TvUni/Prioridad/4.html' %}
+            
+			{% endif %}
+	
+
+	{% endblock %}

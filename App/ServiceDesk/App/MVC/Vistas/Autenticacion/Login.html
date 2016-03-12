@@ -1,0 +1,51 @@
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Inicio de Sesión </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" method="POST" action="{{NeuralRutaApp}}/Index/Autentificacion/Index"  id="loginform">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="usuario" type="text" name="usuario" id="usuario" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Contraseña" type="password" name="password" id="password">
+                                </div>
+                                 <button type="submit" name="enviar" value="{{Fecha|Codificar}}" class="btn btn-lg btn-success btn-block">Ingresar</button> 
+                                <div class="checkbox">
+                                 <p>Expertos Claro S.A. &#169;</p> 
+                                    <p align="center" >
+                                        <font color="#FF0000">
+        									{% if Error == 'DATOSVACIOS' %}
+        										Datos Vacios en el Formulario
+        									{% elseif Error == 'DATOSERRONEOS' %}
+        										Usuario y/o Contraseña Incorrectos
+                                            {% elseif Error == 'CONSULTARADMINISTRADOR' %}
+                                                Consulte con el Administrador
+                                            {% elseif Error == 'ERRORLLAVE' %}
+                                                La Página a Caducado (F5)        
+        									{% endif%}
+        								</font>
+                                    </p>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Core Scripts - Include with every page -->
+    <script src="{{NeuralRutaWebPublico}}/js/jquery-1.10.2.js"></script>
+    <script src="{{NeuralRutaWebPublico}}/js/bootstrap.min.js"></script>
+    <script src="{{NeuralRutaWebPublico}}/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+</body>
+
+ 

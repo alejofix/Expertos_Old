@@ -1,0 +1,38 @@
+
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong style="color: darkgreen;">Guión Creado Correctamente &#10003; </strong></div>
+			<div class="panel-body">
+				<div class="col-lg-12">
+					<a class="btn btn-primary" href="#copy" id="copy-guion">Copiar Guion</a>
+				</div>
+				
+				<div class="col-lg-12">
+				
+					<div align="center">
+						<strong>Previsualización:</strong><br />
+					</div>
+                    <div class="jumbotron">
+						<fieldset disabled>
+                             
+{% block Contenido %}{% endblock %}
+        
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<link href="{{ NeuralRutaWebPublico|e }}/css/zyos/adicional.css" rel="stylesheet">
+	<!-- <script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/zClip/jquery.zclip.js"></script> -->
+    <script type="text/javascript" src="../../jquery.zclip.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#copy-guion').zclip({
+				path:'../../ZeroClipboard.swf',
+				copy:$('#description').text()
+			});
+		});
+	</script>
+    

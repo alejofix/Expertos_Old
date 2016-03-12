@@ -1,0 +1,13 @@
+{% filter escape %}
+<br />          
+{% endfilter %}
+AVISO: {{Datos.aviso|e}}... SÍNTOMA: {{Datos.sector|e}} {{Datos.data|e}} {{Datos.intermitencia|e}}... SERV.AFECTADOS: {{Datos.sintoma|e}}<br />
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+GUIÓN: “Apreciado cliente, en este momento nuestro equipo técnico y de mantenimiento se encuentra trabajando para atender una falla en la red. Nuestro tiempo estimado para dar solución al inconveniente es de 12 horas, tiempo en el cual su servicio puede presentar intermitencia o ausencia del mismo.”<br /> 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+PROCESO DE SOPORTE: Reportar la cuenta a través de la Página de Gerencia, NO REQUIERE VALIDAR VECINOS.<br /> 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+ESCENARIOS DE MARCACIÓN: --1.Primera vez que el cliente se comunica por este aviso, use la marcación DIS-FMS --2.Cliente se ha comunicado en más de una ocasión por este aviso, use la marcación  DIS-AVF.						
+{% filter escape %}
+<br /><br />          
+{% endfilter %}

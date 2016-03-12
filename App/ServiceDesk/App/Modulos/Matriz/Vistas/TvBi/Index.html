@@ -1,0 +1,125 @@
+	{% extends 'Base/Base.html' %}
+	
+	{% block Contenido %}
+		
+		<div class="row" style="margin-bottom: 15px;">
+			{% include 'Menus/menu_matriz.html' %}
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Creación de Guión</strong></div>
+					<div class="panel-body">
+						<div class="row">
+							<form id="FormularioTvBi" name="guiontripleplay" action='#' method='post' role="form">
+								
+								<div class="col-lg-6">
+                                
+									<div class="form-group">
+                                        <nav class="navbar navbar-default">
+                                            <label>Matriz</label>
+                                            <input name="matriz" autofocus="autofocus"  id="matriz" type="text" placeholder="# Cta. Matriz" size="12" maxlength="6" onkeyUp="return ValNumero(this);" required>
+											:	<select name="torre" id="torre">
+													<option value=" "> </option>
+                                                    <option value="en Casas">Casa</option>
+                                                    <option value="en Torres">Torre</option>
+                                                    <option value="en Etapas">Etapa</option>
+                                                    <option value="en Bloques">Bloque</option>
+                                                    <option value="en Interiorer">Interior</option>
+                                                    <option value="en Manzanas">Manzana</option>
+                                               	</select>
+                                           	<input name="torren" id="torren"  type="text" size="18" maxlength="15">
+                                         <p class="help-block">Información de Cta Matriz.</p>
+                                         </nav>
+                  					</div>
+                                    
+                                    <div class="form-group">
+										<label>Número del Aviso</label>
+										<input type="text" class="form-control" name="aviso" id="aviso" placeholder="10 caracteres Numéricos" maxlength="10" onkeyUp="return ValNumero(this);" required/>
+										<p class="help-block">Debe ingresar un Aviso Numérico.</p>
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group row">
+                                        
+                                		<div class="col-lg-6">
+                                            {% import "Listas/Listas_Afectacion.html" as formulario %}
+						                   {{ formulario.afectacionTVBi('data', 'data') }}
+                                               <br /> 
+											<label>Falla</label>
+        										<select class="form-control" name="prioridad" id="prioridad" required/>
+        											<option value="">Seleccione Tipo de Fallo</option>
+        											<optgroup>
+											  	          <option value="1">General</option>
+									   		              <option value="2">Puntual</option>
+								    		          </optgroup>
+        										</select>
+                       					</div>
+										
+										<div class="col-lg-6">
+											<label><br /> Reportar Intermitencia</label>
+											<div class="radio">
+												<input type="hidden" name="intermitencia" value="." checked/>
+												<label><input type="checkbox" name="intermitencia" value="y/o Intermitencia" /> <strong>Intermitencia</strong></label>
+											</div>
+										</div>
+									</div>
+									
+								{% if Sesion.Permisos.HFC.ESCRITURA == true %}	
+									<div class="form-group row">
+										<div class="col-lg-6" style="margin-top: 25px;">
+											<button data-placement="bottom" title="Guión_Televisión" type="submit" name="boton" value="boton" class="btn btn-primary">Crear Guión</button>
+											<input type="hidden" name="sintoma" value="Televisión">
+										</div>
+										<div class="col-lg-6" style="margin-top: 25px;">
+											<input class="btn btn-default" class="#" type="button" id="borrar" value="Borrar Formulario"/>
+										</div>
+									</div>
+								{% endif %}
+								
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="row" id="Respuesta" style="margin-top: 35px;"></div>
+		
+	{% endblock %}
+	
+	{% block Script %}
+		
+		
+		<style type="text/css">
+			.error {
+				font-family: verdana;
+				font-size: 10px;
+				font-weight: bold;
+				color: red;
+			}
+		</style>
+		
+ 		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#borrar").click(function() {
+					 $("#FormularioTvBi")[0].reset();
+				});
+			});
+		</script>
+		
+		{% if Sesion.Permisos.HFC.ESCRITURA == true %}
+			
+			<script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/HFC/numerico.js"></script>
+			<script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/HFC/ajax.js"></script>
+			
+			{{ Validacion|raw }}
+			
+		{% endif %}
+		
+		
+	{% endblock %}

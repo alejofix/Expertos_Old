@@ -1,0 +1,112 @@
+	{% extends 'Base/Base.html' %}
+	
+	{% block Contenido %}
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"></h1>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 15px;">
+			
+			<style type="text/css">
+				.seleccionado {
+					font-weight: bold;
+				}
+			</style>
+        	<div class="col-lg-12">
+                    <ul class="nav nav-tabs" id="menu-salas" data-sala="{{ attribute(salas, '0').salas|e }}">
+                      <!--  
+                        <li role="presentation" class="{{ activo == 'Chat' ? 'active seleccionado' : '' }}"><a href="{{ NeuralRutaApp|e }}/Chat">Service Desk</a></li> 
+                      -->
+                      	{% for data in salas %}
+                      		<li role="presentation" id="salas_{{ data.salas|e }}" class="{{ loop.index0 == '0' ? 'active' : '' }}"><a href="javascript:;" class="menu_seleccion" id="{{ data.salas|e }}" data-tipo="publico" data-nombre="{{ data.nombre|e|title }}">{{ data.nombre|e|title }}</a></li>
+                      	{% endfor %}
+                    </ul>
+			</div>
+			
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				
+				<div class="chat-panel panel panel-default">
+					<div class="panel-heading"><i class="fa fa-comments fa-fw"></i> Chat: <strong id="tituloChat">{{ attribute(salas, '0').nombre|e }}</strong></div>
+					<div class="panel-body">
+						<ul class="chat" id="chat" data="0">
+							
+						</ul>
+					</div>
+				
+				{% if Sesion.Permisos.Chat.ESCRITURA == true %}
+				
+					<div class="panel-footer">
+						<form action="#" id="sms" name="sms" method="POST">
+							<div class="input-group">
+								<input id="btn-input" name="mensaje" type="text" class="form-control input-sm" placeholder="Escriba su Mensaje" />
+								<input type="hidden" name="usuario" value="{{ Sesion.Informacion.USUARIO_RR|e }}" />
+								<input type="hidden" name="tipo" id="tipo_valor" value="{{ attribute(salas, '0').salas|e }}" />
+								<span class="input-group-btn">
+									<button class="btn btn-warning btn-sm" id="btn-chat">Enviar</button>
+								</span>
+							</div>
+						</form>
+					</div>
+					
+				{% endif %}
+				
+				</div>
+			</div>
+		</div>
+		
+	{% endblock %}
+	
+	{% block Script %}
+		
+		<style type="text/css">
+			.error {
+				font-family: verdana;
+				font-size: 10px;
+				font-weight: bold;
+				color: red;
+			}
+		</style>
+		
+		<script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/chat/ajax.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var sala = $("#menu-salas").attr("data-sala")
+				peticionAjaxSala("chat", "{{ NeuralRutaApp|e }}/Chat/Listado/listadoMensajes", "{{ Sesion.Informacion.USUARIO_RR|e }}", sala);
+				tiempo = setInterval(function() {
+					var sala2 = $("#menu-salas").attr("data-sala")
+					peticionAjaxSala("chat", "{{ NeuralRutaApp|e }}/Chat/Listado/listadoMensajes", "{{ Sesion.Informacion.USUARIO_RR|e }}", sala2);
+				}, 5000);
+				
+			});
+		</script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".menu_seleccion").click(function() {
+					var Seleccionado = $("#menu-salas").attr('data-sala');
+					var IDSala = $(this).attr('id');
+					var Nombre = $(this).attr('data-nombre');
+					var tipoSala = $(this).attr('data-tipo');
+					$("#tituloChat").text(Nombre);
+					$("#menu-salas").attr('data-sala', IDSala);
+					$("#salas_" + Seleccionado).attr('class', '');
+					$("#salas_" + IDSala).attr('class', 'active');
+					$("#tipo_valor").val(IDSala);
+					peticionAjaxSala("chat", "{{ NeuralRutaApp|e }}/Chat/Listado/listadoMensajes", "{{ Sesion.Informacion.USUARIO_RR|e }}", IDSala);
+				});
+			});
+		</script>
+		
+		{% if Sesion.Permisos.Chat.ESCRITURA == true %}
+			
+			{{ Script|raw }}
+			
+		{% endif %}
+		
+		
+	{% endblock %}

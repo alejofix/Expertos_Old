@@ -1,0 +1,13 @@
+{% filter escape %}
+<br />          
+{% endfilter %}
+AVISO: {{Datos.aviso|e}}... SÍNTOMA: {{Datos.sector|e}} con CMs {{Datos.data|e}} {{Datos.intermitencia|e}}... SERV.AFECTADOS: {{Datos.sintoma|e}}<br />
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+GUIÓN: “Apreciado cliente, en este momento nuestro equipo técnico y de mantenimiento se encuentra trabajando para atender una falla en la red. Nuestro tiempo estimado para dar solución al inconveniente es de 98 horas, tiempo en el cual su servicio puede presentar intermitencia o ausencia del mismo.”<br /> 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+PROCESO DE SOPORTE: Validar 1 vecino a través de Diagnosticador y garantizar que el {{Datos.sector|e}} corresponda al reportado, si ambos presentan la misma falla reportar las cuentas. Si los niveles están correctos confirme telefónicamente con 1 vecino, si el vecino presenta intermitencia reporte ambas cuentas. En caso contrario continúe con proceso CCAA<br /> 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------.<br />
+ESCENARIOS DE MARCACIÓN: --1.Primera vez que el cliente se comunica por este aviso, use la marcación SOP-MRU --2.Cliente se ha comunicado en más de una ocasión por este aviso, use la marcación  DIS-AVF.
+{% filter escape %}
+<br /><br />          
+{% endfilter %}

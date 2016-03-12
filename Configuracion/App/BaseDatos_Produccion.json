@@ -1,0 +1,34 @@
+{
+	"Predeterminado": {
+		"Doctrine" : { 
+			"dbname" : "expertos",
+			"user" : "root",
+			"password" : "cocacola0",
+			"host" : "localhost",
+			"driver" : "pdo_mysql",
+			"charset" : "utf8"
+		},
+		"PDO" : { 
+			"dns" : "mysql:host=localhost;dbname=base_datos",
+			"user" : "root",
+			"password" : "cocacola0",
+			"parametros" : false
+		}
+	},
+	"ServiceDesk": {
+		"Doctrine" : { 
+			"dbname" : "expertos",
+			"user" : "root",
+			"password" : "cocacola0",
+			"host" : "localhost",
+			"driver" : "pdo_mysql",
+			"charset" : "utf8"
+		},
+		"PDO" : { 
+			"dns" : "mysql:host=localhost;dbname=base_datos",
+			"user" : "root",
+			"password" : "cocacola0",
+			"parametros" : false
+		}
+	}
+}

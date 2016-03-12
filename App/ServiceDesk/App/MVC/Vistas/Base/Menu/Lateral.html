@@ -1,0 +1,31 @@
+<ul class="nav" id="side-menu">
+				
+			{% if Sesion.Permisos.Inicio.LECTURA == true %}
+				<li><a href="{{ NeuralRutaApp|e }}/Inicio"><i class="fa fa-dashboard fa-fw"></i> Inicio</a></li>
+			{% endif %}
+			
+			{% if Sesion.Permisos.Chat.LECTURA == true %}
+				<li><a href="{{ NeuralRutaApp|e }}/Chat"><i class="fa fa-comments fa-fw"></i> Chat</a></li>
+			{% endif %}
+
+			{% if Sesion.Permisos.HFC.LECTURA == true %}
+				<li><a href="{{ NeuralRutaApp|e }}/HFC/Play3"><i class="fa fa-bar-chart-o fa-fw"></i> Guiones HFC<span class="fa arrow"></span></a></li>
+            {% endif %}
+            
+            {% if Sesion.Permisos.Matriz.LECTURA == true %}
+                <li><a href="{{NeuralRutaApp|e }}/Matriz/Play3"><i class="fa fa-sitemap fa-fw"></i> Guiones Cta. Matriz<span class="fa arrow"></span></a></li>
+                
+            {% endif %}
+            {% if Sesion.Permisos.Plataforma.LECTURA == true %}                   
+                <li><a href="{{ NeuralRutaApp|e }}/Plataforma/Generales"><i class="fa fa-table fa-fw"></i> Guiones Plataforma<span class="fa arrow"></span></a></li>
+                                
+            {% endif %}
+            
+            {% if Sesion.Permisos.Plataforma.LECTURA == true %}
+                <li><a href="{{ NeuralRutaApp|e }}/Mantenimientos/Preventivo"><i class="fa fa-bar-chart-o fa-fw"></i> Guiones Mantenimientos<span class="fa arrow"></span></a></li>
+			{% endif %}
+				
+</ul>
+
+{% include 'Base/Mejoramiento/Lateral.html' %}
+

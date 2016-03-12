@@ -1,0 +1,116 @@
+	{% extends 'Base/Base.html' %}
+	
+	{% block Contenido %}
+		
+		<div class="row" style="margin-bottom: 15px;">
+			{% include 'Menus/menu_hfc.html' %}
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Creación de Guión</strong></div>
+					<div class="panel-body">
+						<div class="row">
+							<form id="FormularioPlay3" name="guiontripleplay" action='#' method='post' role="form">
+								
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>Aviso</label>
+										<input type="text" class="form-control" name="aviso" id="aviso" placeholder="10 caracteres Numéricos" maxlength="10" onkeyUp="return ValNumero(this);" autofocus="autofocus" required/>
+										<p class="help-block">Debe ingresar un Aviso Numérico.</p>
+									</div>
+									<div class="form-group">
+										<label>Prioridad del Aviso</label>
+										<select class="form-control" name="prioridad" id="prioridad" required/>
+											<option value="">Seleccione una Prioridad</option>
+											<optgroup>
+												{% for opcion in 1..4 %}
+													<option value="{{ opcion|e }}">Prioridad {{ opcion|e }}</option>
+												{% endfor %}
+											</optgroup>
+										</select>
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									
+									<div class="form-group row">
+
+										<div class="col-lg-6">
+                                            <label><br />Lugar afectación</label>
+                                            <select class="form-control" name="sector" id="sector" required/>
+    										 <option value="">Falla en</option> 
+                                              <optgroup>
+                                                <option value="Sector">Sector</option>
+                                                <option value="Nodo">Nodo</option>
+                                              </optgroup>
+    										</select>
+                                 		</div>
+
+										<div class="col-lg-6">
+											<label><br /> Reportar Intermitencia</label>
+											<div class="radio">
+												<input type="hidden" name="intermitencia" value="Sin_Señal" checked/>
+												<label><input type="checkbox" name="intermitencia" value="Sin_Señal y/o Intermitente" /> <strong>Intermitencia</strong></label>
+											</div>
+										</div>
+									</div>
+									
+								{% if Sesion.Permisos.HFC.ESCRITURA == true %}	
+									<div class="form-group row">
+										<div class="col-lg-6" style="margin-top: 25px;">
+											<button data-placement="bottom" title="Guión_3_play" type="submit" name="boton" value="boton" class="btn btn-primary">Crear Guión</button>
+											<input type="hidden" name="sintoma" value="3_play">
+											<input type="hidden" name="data" value="3_play">
+										</div>
+										<div class="col-lg-6" style="margin-top: 25px;">
+											<input class="btn btn-default" class="#" type="button" id="borrar" value="Borrar Formulario"/>
+										</div>
+									</div>
+								{% endif %}
+								
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="row" id="Respuesta" style="margin-top: 35px;"></div>
+		
+	{% endblock %}
+	
+	{% block Script %}
+		
+		
+		<style type="text/css">
+			.error {
+				font-family: verdana;
+				font-size: 10px;
+				font-weight: bold;
+				color: red;
+			}
+		</style>
+		
+ 		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#borrar").click(function() {
+					 $("#FormularioPlay3")[0].reset();
+				});
+			});
+		</script>
+		
+		{% if Sesion.Permisos.HFC.ESCRITURA == true %}
+			
+			<script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/HFC/numerico.js"></script>
+			<script type="text/javascript" src="{{ NeuralRutaWebPublico|e }}/js/HFC/ajax.js"></script>
+			
+			{{ Validacion|raw }}
+			
+		{% endif %}
+		
+		
+	{% endblock %}
